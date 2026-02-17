@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# ML Models
+*.h5
+*.pt
+*.pth
+*.onnx
+*.pkl
+
+# Dataset
+dataset/
+datasets/
+*.zip
+*.csv
+
+# Env
+venv/
+.env

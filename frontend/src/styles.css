@@ -1,0 +1,206 @@
+/* ===============================
+   GLOBAL FALLBACK THEME (CRITICAL FIX)
+================================ */
+
+:root {
+  --bg: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.85);
+  --border: rgba(0, 0, 0, 0.12);
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #2563eb;
+}
+
+/* ===============================
+   THEME VARIABLES
+================================ */
+
+body.light {
+  --bg: linear-gradient(135deg, #e0e7ff, #f8fafc);
+  --glass: rgba(255, 255, 255, 0.6);
+  --border: rgba(0, 0, 0, 0.12);
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #2563eb;
+}
+
+body.dark {
+  --bg: radial-gradient(circle at top, #0f172a, #020617);
+  --glass: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+}
+
+/* ===============================
+   BASE PAGE
+================================ */
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: var(--glass);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar h1 {
+  color: var(--primary);
+}
+
+/* ===============================
+   CONTENT
+================================ */
+
+.content {
+  padding: 50px;
+  min-height: calc(100vh - 80px);
+}
+
+/* ===============================
+   CARDS
+================================ */
+
+.card {
+  background: var(--glass);
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  padding: 32px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   FORMS
+================================ */
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+/* 🔽 DROPDOWN FIX (IMPORTANT) */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Dropdown options */
+option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* Dark mode dropdown */
+body.dark select {
+  background-color: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+}
+
+body.dark option {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+button {
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===============================
+   ✅ CONFIDENCE BAR (FIXED)
+================================ */
+
+.bar {
+  width: 100%;
+  height: 16px;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #facc15,
+    #ef4444
+  );
+  transition: width 0.4s ease;
+}
+
+/* ===============================
+   LOGIN PAGE
+================================ */
+
+.center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center .card {
+  width: 360px;
+  text-align: center;
+}
+
+.center .card h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.center .card button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.center .link {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.center .link span {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+}

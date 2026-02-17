@@ -1,0 +1,19 @@
+fastapi
+uvicorn
+mysql-connector-python
+bcrypt
+python-multipart
+pdfplumber
+
+# 🔹 ML / AI
+numpy
+pandas
+scikit-learn
+joblib
+tensorflow
+
+# 🔹 Image processing
+Pillow
+
+# 🔹 PDF + OCR helpers (safe)
+pytz
