@@ -1,34 +1,34 @@
+import { useState } from "react";
+
 export default function PredictButton({
   disease,
   inputData,
   patientId,
-  setResult
+  setResult,
+  setError
 }) {
+  const [loading, setLoading] = useState(false);
+
   if (!disease || !patientId) return null;
 
   const isRadiology = disease === "lung" || disease === "brain";
   const isBiomarker = disease === "heart" || disease === "diabetes";
 
-  // 🔒 Disable only if REQUIRED input missing
   const disabled =
     (isRadiology && !inputData.image) ||
     (isBiomarker && !inputData.report);
 
   const predict = async () => {
     const formData = new FormData();
-
     formData.append("patient_id", patientId);
     formData.append("disease", disease);
 
-    // ✅ Radiology → image only
-    if (isRadiology) {
-      formData.append("image", inputData.image);
-    }
+    if (isRadiology) formData.append("image", inputData.image);
+    if (isBiomarker) formData.append("report", inputData.report);
 
-    // ✅ Biomarker → report only
-    if (isBiomarker) {
-      formData.append("report", inputData.report);
-    }
+    setLoading(true);
+    setResult(null);
+    setError(null);
 
     try {
       const res = await fetch("http://localhost:8000/predict", {
@@ -38,32 +38,41 @@ export default function PredictButton({
 
       const data = await res.json();
 
-      // 🔥 NORMALIZE BACKEND RESPONSE
+      // ❌ Backend returned a validation / modality error
+      if (data.status === "error") {
+        setError(data.message || "An error occurred. Please try again.");
+        return;
+      }
+
+      // ✅ Success
       setResult({
         prediction: data.prediction,
         confidence: data.confidence,
-        explanation: data.explanation || null
+        explanation: data.explanation || null,
+        disease
       });
 
     } catch (err) {
-      alert("Prediction service unavailable");
+      setError("Prediction service unavailable. Make sure the backend is running.");
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <>
-      <button disabled={disabled} onClick={predict}>
-        Generate Clinical Conclusion
+    <div style={{ marginTop: "8px" }}>
+      <button disabled={disabled || loading} onClick={predict}>
+        {loading
+          ? <><span className="spinner" /> Analysing…</>
+          : "⚡ Generate Clinical Conclusion"}
       </button>
 
       {disabled && (
         <p className="warning">
-          ⚠️ {isRadiology
-            ? "Please upload an image"
-            : "Please upload a report"}
+          ⚠️ {isRadiology ? "Please upload an image first" : "Please upload a biomarker PDF first"}
         </p>
       )}
-    </>
+    </div>
   );
 }

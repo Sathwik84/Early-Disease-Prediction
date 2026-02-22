@@ -1,23 +1,48 @@
-export default function Navbar({ setPage, theme, setTheme, logout }) {
+export default function Navbar({ setPage, theme, setTheme, logout, activePage }) {
   return (
     <nav className="navbar">
-      <h2 className="logo">Medical AI Dashboard</h2>
+      <div className="navbar-logo">
+        <div className="logo-icon">🧬</div>
+        MedicalAI
+      </div>
 
       <div className="nav-actions">
-        <button onClick={() => setPage("predict")}>Predict</button>
-        <button onClick={() => setPage("analysis")}>Analysis</button>
-        <button onClick={() => setPage("profile")}>Profile</button>
-
-        {/* 🌗 THEME TOGGLE */}
         <button
-          onClick={() =>
-            setTheme(theme === "dark" ? "light" : "dark")
-          }
+          className={`nav-btn ${activePage === "home" ? "active" : ""}`}
+          onClick={() => setPage("home")}
         >
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          🏠 Home
+        </button>
+        <button
+          className={`nav-btn ${activePage === "predict" ? "active" : ""}`}
+          onClick={() => setPage("predict")}
+        >
+          🔮 Predict
+        </button>
+        <button
+          className={`nav-btn ${activePage === "analysis" ? "active" : ""}`}
+          onClick={() => setPage("analysis")}
+        >
+          📊 Analysis
+        </button>
+        <button
+          className={`nav-btn ${activePage === "profile" ? "active" : ""}`}
+          onClick={() => setPage("profile")}
+        >
+          👤 Profile
         </button>
 
-        <button onClick={logout}>Logout</button>
+        <button
+          className="nav-btn theme-btn"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          title="Toggle theme"
+        >
+          {theme === "dark" ? "☀️" : "🌙"}
+        </button>
+
+        <button className="nav-btn logout-btn" onClick={logout}>
+          Logout
+        </button>
       </div>
     </nav>
   );

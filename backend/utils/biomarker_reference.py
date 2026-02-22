@@ -1,17 +1,18 @@
-# Normal reference ranges for biomarkers
+# Normal reference ranges — keyed to EXACT parser field names
+# Each entry: (normal_min, normal_max, display_name, unit)
 
 HEART_REFERENCE = {
-    "age": (0, 120),
-    "cholesterol": (125, 200),
-    "resting_bp": (90, 120),
-    "max_heart_rate": (60, 100),
-    "oldpeak": (0.0, 1.0)
+    "chol":     (125, 200,  "Cholesterol",           "mg/dL"),
+    "trestbps": (90,  120,  "Resting Blood Pressure", "mmHg"),
+    "thalach":  (60,  100,  "Max Heart Rate",          "bpm"),
+    "oldpeak":  (0.0, 1.0,  "ST Depression",           "mm"),
+    "age":      (0,   120,  "Age",                     "years"),
 }
 
 DIABETES_REFERENCE = {
-    "glucose": (70, 140),
-    "blood_pressure": (60, 90),
-    "insulin": (2, 25),
-    "bmi": (18.5, 24.9),
-    "age": (0, 120)
+    "Glucose":       (70,   140,  "Blood Glucose",    "mg/dL"),
+    "BloodPressure": (60,   90,   "Blood Pressure",   "mmHg"),
+    "Insulin":       (2,    25,   "Insulin",          "μU/mL"),
+    "BMI":           (18.5, 24.9, "BMI",              "kg/m²"),
+    "Age":           (0,    120,  "Age",              "years"),
 }

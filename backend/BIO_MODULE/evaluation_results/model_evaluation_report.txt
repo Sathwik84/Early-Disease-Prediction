@@ -1,0 +1,55 @@
+MedicalAI — Biomarker Model Evaluation Report
+Generated: 2026-02-22 18:36:30
+=======================================================
+
+Models evaluated: Heart Disease (Logistic/RF) · Diabetes (Logistic/RF)
+Test size: 20% stratified split | Random seed: 42
+
+=======================================================
+  MODEL: Heart Disease
+=======================================================
+  Dataset Rows (Test Split 20%): 205
+  Accuracy        : 100.00%
+  Weighted F1     : 1.0000
+  ROC-AUC         : 1.0000
+  Sensitivity     : 100.00%
+  Specificity     : 100.00%
+
+  Confusion Matrix:
+    TP=105  FP=0
+    FN=0  TN=100
+
+  Classification Report:
+                   precision    recall  f1-score   support
+    
+       No Disease       1.00      1.00      1.00       100
+    Heart Disease       1.00      1.00      1.00       105
+    
+         accuracy                           1.00       205
+        macro avg       1.00      1.00      1.00       205
+     weighted avg       1.00      1.00      1.00       205
+
+
+=======================================================
+  MODEL: Diabetes
+=======================================================
+  Dataset Rows (Test Split 20%): 154
+  Accuracy        : 77.27%
+  Weighted F1     : 0.7700
+  ROC-AUC         : 0.8256
+  Sensitivity     : 62.96%
+  Specificity     : 85.00%
+
+  Confusion Matrix:
+    TP=34  FP=15
+    FN=20  TN=85
+
+  Classification Report:
+                  precision    recall  f1-score   support
+    
+     No Diabetes       0.81      0.85      0.83       100
+        Diabetes       0.69      0.63      0.66        54
+    
+        accuracy                           0.77       154
+       macro avg       0.75      0.74      0.74       154
+    weighted avg       0.77      0.77      0.77       154

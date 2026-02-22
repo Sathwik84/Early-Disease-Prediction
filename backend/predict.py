@@ -98,7 +98,7 @@ def predict(
             }
 
         result, confidence = predict_heart(sample)
-        explanation = explain_biomarkers(sample, "heart")
+        explanation = {"biomarkers": explain_biomarkers(sample, "heart")}
 
     # ================= DIABETES =================
     elif disease == "diabetes":
@@ -128,7 +128,7 @@ def predict(
             }
 
         result, confidence = predict_diabetes(sample)
-        explanation = explain_biomarkers(sample, "diabetes")
+        explanation = {"biomarkers": explain_biomarkers(sample, "diabetes")}
 
     # ================= BRAIN =================
     elif disease == "brain":
